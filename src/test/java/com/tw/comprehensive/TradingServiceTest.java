@@ -43,4 +43,15 @@ class TradingServiceTest {
         assertEquals(tradeFromRepository.getReference(), tradeFromService.getReference());
     }
 
+    @Test
+    void should_return_same_trade_id_from_repository_and_service_when_create_trade() {
+        MockitoAnnotations.initMocks(this);
+        // given
+
+        // when
+
+        // then
+
+    }
+
 }
