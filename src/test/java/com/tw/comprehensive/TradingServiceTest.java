@@ -26,4 +26,12 @@ class TradingServiceTest {
         Mockito.verify(auditService, Mockito.times(1)).logNewTrade(trade);
     }
 
+    @Test
+    void should_return_same_value_both_findTrade_and_findById_when_call_findTrade_and_findById() {
+        MockitoAnnotations.initMocks(this);
+        // given
+        // when
+        // then
+    }
+
 }
