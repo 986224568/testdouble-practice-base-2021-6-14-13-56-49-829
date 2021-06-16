@@ -63,10 +63,12 @@ class TradingServiceTest {
     void should_call_createTrade_in_repository_createTrade_in_service() {
         MockitoAnnotations.initMocks(this);
         // given
-
+        TradingService tradingService = new TradingService(tradeRepository, auditService);
+        Trade trade = new Trade("", "");
         // when
-
+        tradingService.createTrade(trade);
         // then
+        Mockito.verify(tradeRepository, Mockito.times(1)).createTrade(trade);
     }
 
 }
