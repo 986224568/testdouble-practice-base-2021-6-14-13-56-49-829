@@ -6,6 +6,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
 class TradingServiceTest {
     @Mock
@@ -30,12 +31,13 @@ class TradingServiceTest {
     void should_return_same_value_both_findTrade_and_findById_when_call_findTrade_and_findById() {
         MockitoAnnotations.initMocks(this);
         // given
-        TradeRepository tradeRepository1 = new TradeRepository();
-        TradingService tradingService = new TradingService(tradeRepository1, auditService);
+        TradingService tradingService = new TradingService(tradeRepository, auditService);
+        Trade trade = new Trade("", "");
         Long id = 1L;
+        when(tradeRepository.findById(id)).thenReturn(trade);
         // when
         Trade tradeFromService = tradingService.findTrade(id);
-        Trade tradeFromRepository = tradeRepository1.findById(id);
+        Trade tradeFromRepository = tradeRepository.findById(id);
         // then
         assertEquals(tradeFromRepository.getDescription(), tradeFromService.getDescription());
         assertEquals(tradeFromRepository.getReference(), tradeFromService.getReference());
