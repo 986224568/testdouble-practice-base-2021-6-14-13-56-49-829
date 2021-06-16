@@ -59,4 +59,14 @@ class TradingServiceTest {
         assertEquals(idFromService, idFromRepository);
     }
 
+    @Test
+    void should_call_createTrade_in_repository_createTrade_in_service() {
+        MockitoAnnotations.initMocks(this);
+        // given
+
+        // when
+
+        // then
+    }
+
 }
