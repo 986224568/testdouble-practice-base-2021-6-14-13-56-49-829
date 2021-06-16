@@ -30,8 +30,15 @@ class TradingServiceTest {
     void should_return_same_value_both_findTrade_and_findById_when_call_findTrade_and_findById() {
         MockitoAnnotations.initMocks(this);
         // given
+        TradeRepository tradeRepository1 = new TradeRepository();
+        TradingService tradingService = new TradingService(tradeRepository1, auditService);
+        Long id = 1L;
         // when
+        Trade tradeFromService = tradingService.findTrade(id);
+        Trade tradeFromRepository = tradeRepository1.findById(id);
         // then
+        assertEquals(tradeFromRepository.getDescription(), tradeFromService.getDescription());
+        assertEquals(tradeFromRepository.getReference(), tradeFromService.getReference());
     }
 
 }
